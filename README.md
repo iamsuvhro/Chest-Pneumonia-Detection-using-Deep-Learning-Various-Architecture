@@ -34,23 +34,6 @@ Citation: http://www.cell.com/cell/fulltext/S0092-8674(18)30154-5
 
 <h1>Conclusion</h1>
 <html>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
 <body>
     <br>
     <b>Here are the results of our three models</b> 

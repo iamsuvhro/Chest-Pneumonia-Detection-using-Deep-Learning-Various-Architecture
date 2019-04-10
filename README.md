@@ -1,6 +1,6 @@
 # Pneumonia-Diagnosis-using-XRays-96-percent-Recall
-Best score on kaggle &nbsp; [![Tweet](https://twitter.com/SuvhradipG/status/1115841362899894273)]
-<br>
+Best score on kaggle &nbsp; [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)]
+
 [![Status](https://img.shields.io/badge/status-maintained-brightgreen.svg?style=for-the-badge)]()
 [![npm](https://img.shields.io/npm/l/express.svg?style=for-the-badge)]()
 

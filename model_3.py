@@ -1,46 +1,35 @@
-rom keras.layers import Dropout
-from keras.layers.normalization import BatchNormalization
-from keras.datasets import mnist
+# Importing the Keras libraries and packages
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D, ZeroPadding2D, Convolution2D
-from keras.layers import Dropout
-from keras.layers.normalization import BatchNormalization
-from keras import optimizers
-from keras.initializers import RandomNormal
-import warnings
-warnings.filterwarnings("ignore")
+from keras.layers import Conv2D
+from keras.layers import MaxPooling2D
+from keras.layers import Flatten
+from keras.layers import Dense
+from keras.layers.core import Flatten, Dense, Dropout
+from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
+from keras.optimizers import SGD
 
-input_dim =  (28, 28, 1)
-batch_size = 128 
-nb_epoch = 50
+# Initialising the CNN
+model_3_hidden= Sequential()
 
-#For relu layers
-#If we sample weights from a normal distribution N(0,σ) we satisfy this condition with σ=√(2/(ni). 
-#h1 =>  σ=√(2/(fan_in) = 0.050  => N(0,σ) = N(0,0.0505)
-#h2 =>  σ=√(2/(fan_in) = 0.0625  => N(0,σ) = N(0,0.0625)
-#h3 =>  σ=√(2/(fan_in) = 0.0741  => N(0,σ) = N(0,0.0741)
-#out =>  σ=√(2/(fan_in+1) = 0.125  => N(0,σ) = N(0,0.125)
+# Step 1 - Convolution
+model_3_hidden.add(Conv2D(32, (3, 3), input_shape = (64, 64, 3), activation = 'relu'))
+model_3_hidden.add(MaxPooling2D(pool_size = (2, 2)))
+model_3_hidden.add(Dropout(0.2))
+# Adding a second convolutional layer
+model_3_hidden.add(Conv2D(32, (3, 3), activation = 'relu'))
+model_3_hidden.add(MaxPooling2D(pool_size = (2, 2)))
+model_3_hidden.add(Dropout(0.2))
+# Adding a third convolutional layer
+model_3_hidden.add(Conv2D(32, (3, 3), activation = 'relu'))
+model_3_hidden.add(MaxPooling2D(pool_size = (2, 2)))
+model_3_hidden.add(Dropout(0.2))
+# Step 3 - Flattening
+model_3_hidden.add(Flatten())
 
-model_3_hidden = Sequential()
+# Step 4 - Full connection
+model_3_hidden.add(Dense(units = 128, activation = 'relu'))
+model_3_hidden.add(Dense(units = 1, activation = 'sigmoid'))
 
-model_3_hidden.add(Dense(512, activation='relu', input_shape=input_dim, kernel_initializer=RandomNormal(mean=0.0, stddev=0.0505, seed=None)))
-model_3_hidden.add(BatchNormalization())
-model_3_hidden.add(Dropout(0.5))
-
-model_3_hidden.add(Dense(364, activation='relu', kernel_initializer=RandomNormal(mean=0.0, stddev=0.0625, seed=None)))
-model_3_hidden.add(BatchNormalization())
-model_3_hidden.add(Dropout(0.5))
-
-model_3_hidden.add(Dense(128, activation='relu', kernel_initializer=RandomNormal(mean=0.0, stddev=0.0741, seed=None)))
-model_3_hidden.add(BatchNormalization())
-model_3_hidden.add(Dropout(0.5))
-
-model_3_hidden.add(Dense(1, activation='sigmoid', kernel_initializer=RandomNormal(mean=0.0, stddev=0.125, seed=None)))
-
-#Compile the model
-optim=optimizers.Adamax(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
-model_3_hidden.compile(optimizer=optim, loss='binary_crossentropy', metrics=['accuracy'])
-
-#Get a summary of the model.
-print(model_3_hidden.summary())
+# Compiling the CNN
+optim=optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
+model_3_hidden.compile(optimizer = optim, loss = 'binary_crossentropy', metrics = ['accuracy'])

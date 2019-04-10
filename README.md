@@ -32,6 +32,57 @@ License: CC BY 4.0
 
 Citation: http://www.cell.com/cell/fulltext/S0092-8674(18)30154-5
 
+<h1>Conclusion</h1>
+<html>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+    <br>
+    <b>Here are the results of our three models</b> 
+<table border=1>
+  <tr>
+    <th>Model</th>
+    <th>Architecture</th>
+    <th>Training Accuracy</th>
+    <th>Test Accuracy</th>
+  </tr>
+  <tr>
+    <td>Model 1</td>
+    <td>2:1 Arcitecture without using Batch Normalization and Dropout</td>
+    <td>99%</td>
+    <td>93%</td>
+  </tr>
+  <tr>
+    <td>Model 2</td>
+    <td>4:2 Achitecture using Batch Normalization and Dropout</td>
+    <td>99%</td>
+    <td>91%</td>
+  </tr>
+  <tr>
+    <td>Model 3</td>
+    <td>3:1 Convolutional layer</td>
+    <td>96%</td>
+    <td>93%</td>
+  </tr>
+</table>
+</body>
+</html>
+
 <h1>MIT License</h1>
 
 ```
